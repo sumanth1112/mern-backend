@@ -1,3 +1,8 @@
 # MERN Backend
 
-This is my MERN backend project.
+A backend project built using:
+- Node.js
+- Express
+- MongoDB
+
+Author: sumanth1112
