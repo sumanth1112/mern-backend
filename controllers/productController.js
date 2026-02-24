@@ -6,7 +6,7 @@ const addProduct = async (req, res) => {
 };
 
 const showProducts = async (req, res) => {
-    const result = await showProducts.find();
+    const result = await productModel.find();
     res.json(result);
 }
 
