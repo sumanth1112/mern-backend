@@ -1,14 +1,13 @@
 
-import {
-  addUser,
-  deleteUser,
-  showUsers,
-} from "../controllers/userController.js";
+import {addUser, deleteUser, showUsers } from "../controllers/userController.js";
+import {authenticate, authorize} from "../middleware/auth.js";
 import express from "express";
+
 const userRouter = express.Router();
 
-userRouter.get("/showUsers", showUsers);
-userRouter.post("/addUser", addUser);
-userRouter.delete("/deleteUser/:id", deleteUser);
+userRouter.get("/", authenticate, authorize("admin"), showUsers);
+userRouter.post("/signup", addUser);
+userRouter.post("/login", login);
+userRouter.delete("/:id", authenticate, authorize("admin"), deleteUser);
 
-export default userRouter
+export default userRouter;
