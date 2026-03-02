@@ -4,8 +4,18 @@ import bcrypt from 'bcrypt';
 
 const SECRET = "hello123";
 
-const addUser = async (req, res) => {
-  const result = await userModel.create(req.body);
+constconst addUser = async (req, res) => {
+  const { name, email, password, role } = req.body;
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const result = await userModel.create({
+    name,
+    email,
+    password: hashedPassword,
+    role
+  });
+
   res.json(result);
 };
 
